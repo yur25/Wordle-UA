@@ -1,0 +1,1 @@
+let hello=console.log("Hello"),lol=document.getElementById("lol");lol.addEventListener("click",hello);

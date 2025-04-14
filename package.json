@@ -5,5 +5,15 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.js"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^6.0.1",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.86.3"
   }
 }
