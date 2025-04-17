@@ -1,4 +1,23 @@
-const hello = console.log("Hello");
-const lol = document.getElementById("lol");
-lol.addEventListener("click", hello);
-// ось як працюють event listener і document.getElementById
+// Варіант як розставити літери на клавіатурі (щоб всі рядки мали однакову кількість символів, на майбутнє)
+
+// йцукенгшщзхї
+// фівапролджє (+стирання)
+// 'ячсмитьбюґ  (+ентер)
+
+const collums = 5 // скільки літер у слові
+const rows = 6 // скільки спроб вгадати
+const gamefield = document.getElementById('gamefield');
+
+for (let i = 0; i < rows; i++) { //генерація потрібної кількості рядків, коробочок і надання їм усім унікального id
+  const row = document.createElement('div');
+    row.classList.add('row');
+    row.id = 'row' + i.toString()
+  for (let j = 0; j < collums; j++) {
+    const box = document.createElement('div');
+    box.classList.add('letter-box');
+    box.id = 'box'+i.toString()+'-'+j.toString()
+    row.appendChild(box);
+  }
+
+  gamefield.appendChild(row);
+}

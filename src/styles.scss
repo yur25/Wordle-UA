@@ -1,7 +1,52 @@
 body {
-    background-color: #f3f0c4;
+    background-color: #ffffff;
+    //стандартний шрифт який зробити? бо той що зараз уродський троха
 }
-.lol {
-    color: #09032e;
-    font-size: 80px;
+$match: #293a23;
+$here: #8a5f20;
+$miss: #424242; //кольори на 3 ситуації, можна буде міняти легко
+
+#gamefield {
+    margin: auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    background-color: beige; //це чисто для тесту
+    max-height: 800px;
+}
+.row {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.letter-box {
+    width: 80px;
+    height: 80px;
+    margin-left: 5px;
+    color:black;
+    font-size: 60px;
+    background-color: transparent;
+    border: #000 solid 2px;
+    border-radius: 10%;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    &.now {
+        outline: $match solid 2px; //тут клас для активної штуки написати потім
+    }
+    &.match {
+        background-color: $match;
+        color: #ffffff;
+    }
+    &.here {
+        background-color: $here;
+        color: #ffffff;
+    }
+    &.miss {
+        background-color: $miss;
+        color: #ffffff;
+    }
 }
