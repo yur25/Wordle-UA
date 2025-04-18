@@ -2,8 +2,8 @@ const answer = "канон";
 const input = "канон";
 
 const wordCompare = (input, answer) => {
-    inputArray = input.split('');
-    answerArray = answer.split('');
+    inputArray = arraify(input)
+    answerArray = arraify(answer)
     result = [];
 
     for (let i in inputArray) {                                         // перевіряє чи на однаковій позиції в обох словах є однакові літери. Якщо так - колір зелений.
