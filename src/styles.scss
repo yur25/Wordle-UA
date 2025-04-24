@@ -1,5 +1,9 @@
 body {
     background-color: #ffffff;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     //стандартний шрифт який зробити? бо той що зараз уродський троха
 }
 $match: #45bd1d;
@@ -7,12 +11,22 @@ $here: hsl(36, 83%, 55%);
 $miss: #5f5c5c; //кольори на 3 ситуації, можна буде міняти легко
 
 #gamefield {
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 800px;
     display: flex;
     flex-direction: column;
     background-color: beige; //це чисто для тесту
     max-height: 800px;
+}
+#keyboard {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    max-width: 800px;
+    background-color: azure; //це чисто для тесту
 }
 .row {
     display: flex;
@@ -48,5 +62,40 @@ $miss: #5f5c5c; //кольори на 3 ситуації, можна буде м
     &.miss {
         background-color: $miss;
         color: #ffffff;
+    }
+}
+.keyboard-box {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    color:black;
+    font-size: 24px;
+    background-color: #DDD;
+    border-radius: 10%;
+    text-align: center;
+    align-content: center;
+    padding: auto;
+    text-transform: uppercase;
+    font-weight: bold;
+    filter: none;
+    &:hover{
+        filter: brightness(0.8);
+    }
+    &.match {
+        background-color: $match;
+        color: #ffffff;
+    }
+    &.here {
+        background-color: $here;
+        color: #ffffff;
+    }
+    &.miss {
+        background-color: $miss;
+        color: #ffffff;
+    }
+    &:active {
+        background-color: #000;
+        color: #ffffff;
+        filter: none;
     }
 }

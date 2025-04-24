@@ -19,5 +19,4 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
     row.appendChild(box);
   }
 
-  gamefield.appendChild(row);
-}
+  gamefield.appendChild(row);}
