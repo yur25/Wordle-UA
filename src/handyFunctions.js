@@ -40,7 +40,6 @@ const logDecorator = (f, logger = console.log) => { // Лабораторна р
     return (logLevel, ...args) => { // logLevel INFO буде видавати загальну інформацію, DEBUG усю, ERROR - лише помилки, будь що інше ніякої інформації
         const debug = (logLevel === "DEBUG");
         const info = (logLevel === "INFO") || debug;
-        const error = (logLevel === "ERROR") || info;
         if (info) {logger("Function" + n + "activated")};
         if (debug) {logger("Arguments inserted in " + n + ": " + args.join(", "))};
         try {
@@ -49,9 +48,9 @@ const logDecorator = (f, logger = console.log) => { // Лабораторна р
             if (debug) {logger("Result of " + n + ": " + result.toString())};
             return result;
         } catch (e) {
-            if (error) {logger("Function " + n + "finished with error:" + e.toString())};
+            logger("Function " + n + "finished with error:" + e.toString())
             throw e;
         }
     }
 
-}
+};

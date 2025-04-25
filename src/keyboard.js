@@ -4,13 +4,13 @@ const keyrowArray2 = ["'",'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', 
 
 
 
-normalKey = (key) => {
+const normalKey = (key) => {
     return () => console.log(key); // Тестова функція
 };
-eraseKey = () => {
+const eraseKey = () => {
     console.log('Erase key pressed'); // Тестова функція
 };
-submitKey = () => {
+const submitKey = () => {
     console.log('Submit key pressed'); // Тестова функція
 };
 
