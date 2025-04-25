@@ -20,3 +20,17 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
   }
 
   gamefield.appendChild(row);}
+
+let activeCell = [0,0]; // рядок, колонка
+let guess = new Array(collums)
+
+const highlightBox = () => {
+    const box = document.getElementById('box' + activeCell[0].toString() + '-' + activeCell[1].toString());
+    box.classList.add('now');
+    if (activeCell[1] > 0) {
+        const prevBox = document.getElementById('box' + activeCell[0].toString() + '-' + (activeCell[1] - 1).toString());
+        prevBox.classList.remove('now');
+    }
+}
+
+highlightBox();

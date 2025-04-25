@@ -5,7 +5,16 @@ const keyrowArray2 = ["'",'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', 
 
 
 const normalKey = (key) => {
-    return () => console.log(key); // Тестова функція
+    return () => {
+    const collum = activeCell[1];
+    if (guess[collum] !== undefined) return;
+    let box = document.getElementById('box' + activeCell[0].toString() + '-' + collum.toString());
+    box.innerText = key;
+    guess[collum] = key;
+    if (collum !== collums - 1) {activeCell[1] += 1};
+    highlightBox();
+    console.log(guess); // Тестова штука
+    }
 };
 const eraseKey = () => {
     console.log('Erase key pressed'); // Тестова функція
