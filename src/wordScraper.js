@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const cheerio = require('cheerio');
 
-const url = 'http://ukrlit.org/slovnyk';
+const url = 'http://ukrlit.org/slovnyk/slovnyk_ukrainskoi_movy_v_11_tomakh';
 
 async function getPrefixes(url) {
   const res = await fetch(url);
@@ -18,13 +18,13 @@ async function getPrefixes(url) {
 async function getWords(prefixes) {
   const words = [];
   for (const prefix of prefixes) {
-    const url = `http://ukrlit.org/slovnyk/${prefix}~`;
+    const url = `http://ukrlit.org/slovnyk/slovnyk_ukrainskoi_movy_v_11_tomakh/${prefix}~`;
     const res = await fetch(url);
     const text = await res.text();
     const $ = cheerio.load(text);
     $('.word-list ul li a').each((i, element) => {
       const word = $(element).text().trim();
-      words.push(word);
+      if (word.length === 5 && !word.includes(`-`)) words.push(word);
     })
   }
   return words;
