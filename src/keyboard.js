@@ -8,7 +8,7 @@ const normalKey = (key) => {
     return () => {
     const collum = activeCell[1];
     if (guess[collum] !== undefined) return;
-    let box = document.getElementById('box' + activeCell[0].toString() + '-' + collum.toString());
+    let box = getBox(activeCell[0], collum);
     box.innerText = key;
     guess[collum] = key;
     if (collum !== collums - 1) {activeCell[1] += 1};
@@ -20,12 +20,13 @@ const eraseKey = () => {
     const collum = activeCell[1];
     if (collum === 0) return;
     let prevBox;
-    if (guess[collum] !== undefined) {prevBox = document.getElementById('box' + activeCell[0].toString() + '-' + collum.toString())
+    if (guess[collum] !== undefined) {prevBox = getBox(...activeCell);
         guess[collum] = undefined}
-    else {prevBox = document.getElementById('box' + activeCell[0].toString() + '-' + (collum - 1).toString())
-        guess[collum - 1] = undefined}
+    else {prevBox = getBox(activeCell[0], collum - 1);
+        guess[collum - 1] = undefined;
+        activeCell[1] -= 1;}
     prevBox.innerText = '';
-    activeCell[1] -= 1;
+    
     highlightBox();
     console.log(guess); // Тестова штука  
 };

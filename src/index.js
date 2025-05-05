@@ -22,15 +22,15 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
   gamefield.appendChild(row);}
 
 let activeCell = [0,0]; // рядок, колонка
-let guess = new Array(collums)
+let guess = new Array(collums).fill(undefined);
 
 const highlightBox = () => {
-    const box = document.getElementById('box' + activeCell[0].toString() + '-' + activeCell[1].toString());
-    box.classList.add('now');
-    if (activeCell[1] > 0) {
-        const someBox = document.getElementById('box' + activeCell[0].toString() + '-' + (activeCell[1] - 1).toString());
-        someBox.classList.remove('now');
+    for (let i = 0; i < collums; i++) {
+        const box = getBox(activeCell[0], i);
+        box.classList.remove('now');
     }
+    const box = getBox(...activeCell);
+    box.classList.add('now');
 }
 
 highlightBox();
