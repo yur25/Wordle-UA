@@ -17,7 +17,17 @@ const normalKey = (key) => {
     }
 };
 const eraseKey = () => {
-    console.log('Erase key pressed'); // Тестова функція
+    const collum = activeCell[1];
+    if (collum === 0) return;
+    let prevBox;
+    if (guess[collum] !== undefined) {prevBox = document.getElementById('box' + activeCell[0].toString() + '-' + collum.toString())
+        guess[collum] = undefined}
+    else {prevBox = document.getElementById('box' + activeCell[0].toString() + '-' + (collum - 1).toString())
+        guess[collum - 1] = undefined}
+    prevBox.innerText = '';
+    activeCell[1] -= 1;
+    highlightBox();
+    console.log(guess); // Тестова штука  
 };
 const submitKey = () => {
     console.log('Submit key pressed'); // Тестова функція

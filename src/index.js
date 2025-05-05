@@ -28,8 +28,8 @@ const highlightBox = () => {
     const box = document.getElementById('box' + activeCell[0].toString() + '-' + activeCell[1].toString());
     box.classList.add('now');
     if (activeCell[1] > 0) {
-        const prevBox = document.getElementById('box' + activeCell[0].toString() + '-' + (activeCell[1] - 1).toString());
-        prevBox.classList.remove('now');
+        const someBox = document.getElementById('box' + activeCell[0].toString() + '-' + (activeCell[1] - 1).toString());
+        someBox.classList.remove('now');
     }
 }
 
