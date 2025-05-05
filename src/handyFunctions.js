@@ -8,6 +8,8 @@ const deArraify = (word) => {
     return word.join("")
 };
 
+const getBox = (i, j) => { return document.getElementById('box' + i.toString() + '-' + j.toString()) }
+
 const memoize = (f, n) => { // Лабораторна робота 3, будемо використовувати щоб мемоїзувати перевірку дійсності слова
     const memory = new Map(); // У Мапі формат зберігання input: [answer, counter]
     return (...args) => {
