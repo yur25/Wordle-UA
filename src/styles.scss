@@ -4,19 +4,24 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    //стандартний шрифт який зробити? бо той що зараз уродський троха
+    font-family: 'Exo 2', sans-serif;
 }
 $match: #45bd1d;
 $here: hsl(36, 83%, 55%);
 $miss: #5f5c5c; //кольори на 3 ситуації, можна буде міняти легко
 
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 #gamefield {
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;
     display: flex;
     flex-direction: column;
-    background-color: beige; //це чисто для тесту
     max-height: 800px;
 }
 #keyboard {
@@ -25,8 +30,8 @@ $miss: #5f5c5c; //кольори на 3 ситуації, можна буде м
     margin-left: auto;
     margin-right: auto;
     margin-top: auto;
+    margin-bottom: 50px;
     max-width: 800px;
-    background-color: azure; //це чисто для тесту
 }
 .row {
     display: flex;
