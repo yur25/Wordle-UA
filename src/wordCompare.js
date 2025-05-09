@@ -8,7 +8,7 @@ const wordCompare = (input, answer) => {
 
     for (let i in inputArray) {                                         // перевіряє чи на однаковій позиції в обох словах є однакові літери. Якщо так - колір зелений.
         if (inputArray.at(i) === answerArray.at(i)) {
-            result.push ({                                              // можливо зробити об'єкт повернення через клас?
+            result.push ({                                              // зробити повернення однієї змінної, по типу match, here, miss
                 'letter': inputArray.at(i), 
                 'position': i,
                 'color': 'green'
