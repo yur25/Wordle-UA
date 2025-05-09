@@ -1,4 +1,3 @@
-const fs = require('node:fs');
 const readline = require('node:readline');
 
 async function getRandomWord(filePath) {
