@@ -15,7 +15,7 @@ async function loadAutoprefixer() {
 gulp.task('styles', async function () {
     const autoprefixer = await loadAutoprefixer();
 
-    return gulp.src('src/**/*.scss')
+    return gulp.src('src/browser/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({ cascade: false }))
         .pipe(cleanCSS())
@@ -25,7 +25,7 @@ gulp.task('styles', async function () {
 
 // Мініфікація JS
 gulp.task('scripts', function () {
-    return gulp.src('src/**/*.js')
+    return gulp.src('src/browser/**/*.js')
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist'))
@@ -38,8 +38,8 @@ gulp.task('serve', function () {
             baseDir: "./"
         }
     });
-    gulp.watch('src/**/*.scss', gulp.series('styles'));
-    gulp.watch('src/**/*.js', gulp.series('scripts'));
+    gulp.watch('src/browser/**/*.scss', gulp.series('styles'));
+    gulp.watch('src/browser/**/*.js', gulp.series('scripts'));
     gulp.watch('*.html').on('change', browserSync.reload);
 });
 

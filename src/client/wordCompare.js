@@ -1,6 +1,3 @@
-const answer = "канон";
-const input = "канон";
-
 const wordCompare = (input, answer) => {
     inputArray = arraify(input)
     answerArray = arraify(answer)
@@ -43,5 +40,3 @@ const wordCompare = (input, answer) => {
     result.sort((a,b) => a.position - b.position);
     return result;
 }
-
-for (const obj of wordCompare(input, answer)) console.log(obj);

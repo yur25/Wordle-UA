@@ -4,8 +4,8 @@ const cheerio = require('cheerio');
 const url = 'http://ukrlit.org/slovnyk/slovnyk_ukrainskoi_movy_v_11_tomakh';
 
 async function getPrefixes(url) {
-  const res = await fetch(url);
-  const text = await res.text();
+  const response = await fetch(url);
+  const text = await response.text();
   const prefixes = [];
   const $ = cheerio.load(text);
   $('.letters__dropdown.letters__dropdown_opacity ul li a').each((i, element) => {
@@ -19,8 +19,8 @@ async function getWords(prefixes) {
   const words = [];
   for (const prefix of prefixes) {
     const url = `http://ukrlit.org/slovnyk/slovnyk_ukrainskoi_movy_v_11_tomakh/${prefix}~`;
-    const res = await fetch(url);
-    const text = await res.text();
+    const response = await fetch(url);
+    const text = await response.text();
     const $ = cheerio.load(text);
     $('.word-list ul li a').each((i, element) => {
       const word = $(element).text().trim();
@@ -33,7 +33,7 @@ async function getWords(prefixes) {
 async function createFile(url) {
   const prefixes = await getPrefixes(url);
   const words = await getWords(prefixes);
-  fs.writeFileSync('ukrainian_words.txt', [...words].join('\n'), 'utf-8');
+  fs.writeFileSync('src/words.txt', [...words].join('\n'), 'utf-8');
 }
 
 createFile(url);

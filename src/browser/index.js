@@ -4,7 +4,7 @@
 // фівапролджє (+стирання)
 // 'ячсмитьбюґ  (+ентер)
 
-const collums = 5 // скільки літер у слові
+const columns = 5 // скільки літер у слові
 const rows = 6 // скільки спроб вгадати
 const gamefield = document.getElementById('gamefield');
 
@@ -12,7 +12,7 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
   const row = document.createElement('div');
     row.classList.add('row');
     row.id = 'row' + i.toString()
-  for (let j = 0; j < collums; j++) {
+  for (let j = 0; j < columns; j++) {
     const box = document.createElement('div');
     box.classList.add('letter-box');
     box.id = 'box'+i.toString()+'-'+j.toString()
@@ -22,10 +22,10 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
   gamefield.appendChild(row);}
 
 let activeCell = [0,0]; // рядок, колонка
-let guess = new Array(collums).fill(undefined);
+let guess = new Array(columns).fill(undefined);
 
 const highlightBox = () => {
-    for (let i = 0; i < collums; i++) {
+    for (let i = 0; i < columns; i++) {
         const box = getBox(activeCell[0], i);
         box.classList.remove('now');
     }

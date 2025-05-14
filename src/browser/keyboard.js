@@ -6,24 +6,24 @@ const keyrowArray2 = ["'",'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', 
 
 const normalKey = (key) => {
     return () => {
-    const collum = activeCell[1];
-    if (guess[collum] !== undefined) return;
-    let box = getBox(activeCell[0], collum);
+    const column = activeCell[1];
+    if (guess[column] !== undefined) return;
+    let box = getBox(activeCell[0], column);
     box.innerText = key;
-    guess[collum] = key;
-    if (collum !== collums - 1) {activeCell[1] += 1};
+    guess[column] = key;
+    if (column !== columns - 1) {activeCell[1] += 1};
     highlightBox();
     console.log(guess); // Тестова штука
     }
 };
 const eraseKey = () => {
-    const collum = activeCell[1];
-    if (collum === 0) return;
+    const column = activeCell[1];
+    if (column === 0) return;
     let prevBox;
-    if (guess[collum] !== undefined) {prevBox = getBox(...activeCell);
-        guess[collum] = undefined}
-    else {prevBox = getBox(activeCell[0], collum - 1);
-        guess[collum - 1] = undefined;
+    if (guess[column] !== undefined) {prevBox = getBox(...activeCell);
+        guess[column] = undefined}
+    else {prevBox = getBox(activeCell[0], column - 1);
+        guess[column - 1] = undefined;
         activeCell[1] -= 1;}
     prevBox.innerText = '';
     
