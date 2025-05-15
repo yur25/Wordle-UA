@@ -37,7 +37,7 @@ const memoize = (f, n) => { // Лабораторна робота 3, будем
     }
 };
 
-const logDecorator = (f, logger = console.log) => { // Лабораторна робота 9? Але треба підключити асинхронки (та й декоратори якось у @ стилі пишуться, а я wrapper написав)
+const logDecorator = (f, logger = console.log) => { // Лабораторна робота 9
     const name = f.name;
     return (logLevel, ...args) => { // logLevel INFO буде видавати загальну інформацію, DEBUG усю, ERROR - лише помилки, будь що інше ніякої інформації
         const debug = (logLevel === "DEBUG");

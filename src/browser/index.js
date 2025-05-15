@@ -1,12 +1,7 @@
-// Варіант як розставити літери на клавіатурі (щоб всі рядки мали однакову кількість символів, на майбутнє)
-
-// йцукенгшщзхї
-// фівапролджє (+стирання)
-// 'ячсмитьбюґ  (+ентер)
-
 const columns = 5 // скільки літер у слові
 const rows = 6 // скільки спроб вгадати
 const gamefield = document.getElementById('gamefield');
+const cLine = document.getElementById('communication-line');
 
 for (let i = 0; i < rows; i++) { //генерація потрібної кількості рядків, коробочок і надання їм усім унікального id
   const row = document.createElement('div');
@@ -23,14 +18,6 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
 
 let activeCell = [0,0]; // рядок, колонка
 let guess = new Array(columns).fill(undefined);
-
-const highlightBox = () => {
-    for (let i = 0; i < columns; i++) {
-        const box = getBox(activeCell[0], i);
-        box.classList.remove('now');
-    }
-    const box = getBox(...activeCell);
-    box.classList.add('now');
-}
-
+let wordleAnswer = 'качка';
 highlightBox();
+messagePlayer('Ви омегакрутелик', 'win'); // Протестив всі варіанти, робоче
