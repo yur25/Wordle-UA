@@ -6,7 +6,6 @@ const highlightBox = () => {
     const box = getBox(...activeCell);
     box.classList.add('now');
 };
-
 const summaryRow = (arr) => { // функція, фарбує рядок з еррея попаданнь і повертає 'win', 'gameover' або 'continue'
     const row = activeCell[0];
     let isWin = true;
@@ -23,8 +22,13 @@ const summaryRow = (arr) => { // функція, фарбує рядок з ер
     guess = new Array(columns).fill(undefined);
     return 'continue';
 };
-
-
+const messagePlayer = (message, decor = 'normal') => { // функція, яка виводить повідомлення на лінію
+    cLine.classList.remove('error-message');
+    cLine.classList.remove('win-message');
+    if (decor === 'error') {cLine.classList.add('error-message')}
+    if (decor === 'win') {cLine.classList.add('win-message')}
+    cLine.innerText = message;
+}
 const normalKey = (key) => {
     return () => {
     const column = activeCell[1];

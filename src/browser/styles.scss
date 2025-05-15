@@ -9,6 +9,8 @@ body {
 $match: #45bd1d;
 $here: hsl(36, 83%, 55%);
 $miss: #5f5c5c; //кольори на 3 ситуації, можна буде міняти легко
+$error: #2e060d;
+$win: #be9c00;
 
 
 .centered {
@@ -103,4 +105,10 @@ $miss: #5f5c5c; //кольори на 3 ситуації, можна буде м
         color: #ffffff;
         filter: none;
     }
+}
+.error-message {
+    color: $error;
+}
+.win-message {
+    color: $win;
 }
