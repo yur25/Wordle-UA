@@ -1,15 +1,11 @@
 const wordCompare = (input, answer) => {
-    inputArray = arraify(input)
-    answerArray = arraify(answer)
-    result = [];
+    const inputArray = input.split('');
+    const answerArray = answer.split('');
+    const objArray = [];
 
     for (let i in inputArray) {                                         // перевіряє чи на однаковій позиції в обох словах є однакові літери. Якщо так - колір зелений.
         if (inputArray.at(i) === answerArray.at(i)) {
-            result.push ({                                              // зробити повернення однієї змінної, по типу match, here, miss
-                'letter': inputArray.at(i), 
-                'position': i,
-                'color': 'green'
-            });
+            objArray.push({'match': i});
             answerArray.splice(i, 1, null);
             inputArray.splice(i, 1, '');
         }
@@ -17,11 +13,7 @@ const wordCompare = (input, answer) => {
 
     for (let i in inputArray) {                                         // перевіряє чи в слові, яке ввів користувач, є літери зі слова, яке потрібно відгадати (не на однаковій позиції). Якщо так - колір жовтий.
         if (answerArray.includes(inputArray.at(i))) {
-            result.push ({
-                'letter': inputArray.at(i), 
-                'position': i,
-                'color': 'yellow'
-            });
+            objArray.push({'here': i});
             answerArray.splice(answerArray.indexOf(inputArray.at(i)), 1, null);
             inputArray.splice(i, 1, '');
         }
@@ -29,14 +21,10 @@ const wordCompare = (input, answer) => {
 
     for (let i in inputArray) {                                         // Призначає решті літер сірий колір.
         if (inputArray.at(i) !== '') {
-            result.push ({
-                'letter': inputArray.at(i), 
-                'position': i,
-                'color': 'gray'
-            });
+            objArray.push({'miss': i});
         }
     }
-
-    result.sort((a,b) => a.position - b.position);
-    return result;
+    
+    objArray.sort((a,b) => Object.values(a) - Object.values(b));
+    return objArray.map((obj) => Object.keys(obj));
 }
