@@ -24,7 +24,7 @@ const wordCompare = (input, answer) => {
             objArray.push({'miss': i});
         }
     }
-    
+
     objArray.sort((a,b) => Object.values(a) - Object.values(b));
-    return objArray.map((obj) => Object.keys(obj));
+    return objArray.map((obj) => Object.keys(obj)[0]);
 }
