@@ -24,13 +24,4 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
 let activeCell = [0,0]; // рядок, колонка
 let guess = new Array(columns).fill(undefined);
 
-const highlightBox = () => {
-    for (let i = 0; i < columns; i++) {
-        const box = getBox(activeCell[0], i);
-        box.classList.remove('now');
-    }
-    const box = getBox(...activeCell);
-    box.classList.add('now');
-}
-
 highlightBox();
