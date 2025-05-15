@@ -23,5 +23,5 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
 
 let activeCell = [0,0]; // рядок, колонка
 let guess = new Array(columns).fill(undefined);
-
+let wordleAnswer = 'качка';
 highlightBox();
