@@ -33,7 +33,7 @@ async function getWords(prefixes) {
 async function createFile(url) {
   const prefixes = await getPrefixes(url);
   const words = await getWords(prefixes);
-  fs.writeFileSync('src/words.txt', [...words].join('\n'), 'utf-8');
+  fs.writeFileSync('words.txt', [...words].join('\n'), 'utf-8');
 }
 
 createFile(url);
