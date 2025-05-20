@@ -29,9 +29,9 @@ const messagePlayer = (message, decor = 'normal') => { // функція, яка
     if (decor === 'win') {cLine.classList.add('win-message')}
     cLine.innerText = message;
 };
-// уяви що тут є якась функція offKeyboard() яка вирубає івентЛістенери з клавіатури щоб не було можливості писати літери після фейлу чи перемоги
 const normalKey = (key) => {
     return () => {
+    if (keyboardOff) return;
     const column = activeCell[1];
     if (guess[column] !== undefined) return;
     let box = getBox(activeCell[0], column);
@@ -43,6 +43,7 @@ const normalKey = (key) => {
     }
 };
 const eraseKey = () => {
+    if (keyboardOff) return;
     const column = activeCell[1];
     if (column === 0) return;
     let prevBox;
@@ -57,6 +58,7 @@ const eraseKey = () => {
     console.log(guess); // Тестова штука  
 };
 const submitKey = () => {
+    if (keyboardOff) return;
     if (guess[columns - 1] === undefined) {messagePlayer('Введіть усі літери', 'error');
         return};
     let guessWord = deArraify(guess);
@@ -65,10 +67,10 @@ const submitKey = () => {
     const compareArray = wordCompare(guessWord, wordleAnswer);
     const gamestate = summaryRow(compareArray);
     if (gamestate === 'win') {messagePlayer('Вітаємо, ви перемогли!', 'win');
-        offKeyboard();
+        keyboardOff = true;
         return};
     if (gamestate === 'gameover') {messagePlayer('Ви програли, спробуйте знову!', 'error');
-        offKeyboard();
+        keyboardOff = true;
         return}
     */
 };
