@@ -2,6 +2,7 @@ const columns = 5 // скільки літер у слові
 const rows = 6 // скільки спроб вгадати
 const gamefield = document.getElementById('gamefield');
 const cLine = document.getElementById('communication-line');
+let keyboardOff = false;
 
 for (let i = 0; i < rows; i++) { //генерація потрібної кількості рядків, коробочок і надання їм усім унікального id
   const row = document.createElement('div');
