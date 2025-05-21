@@ -1,7 +1,7 @@
-const fs = require('node:fs');
-const readline = require('node:readline');
+import fs from 'node:fs';
+import readline from 'node:readline';
 
-async function getRandomWord(filePath) {
+export const getRandomWord = async (filePath) => {
   const fileStream = fs.createReadStream(filePath);
   const rl = readline.createInterface({
     input: fileStream,

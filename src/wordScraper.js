@@ -1,9 +1,9 @@
-const fs = require('node:fs');
-const cheerio = require('cheerio');
+import fs from 'node:fs';
+import * as cheerio from 'cheerio';
 
 const url = 'http://ukrlit.org/slovnyk/slovnyk_ukrainskoi_movy_v_11_tomakh';
 
-async function getPrefixes(url) {
+const getPrefixes = async (url) => {
   const response = await fetch(url);
   const text = await response.text();
   const prefixes = [];
@@ -15,7 +15,7 @@ async function getPrefixes(url) {
   return prefixes;
 }
 
-async function getWords(prefixes) {
+const getWords = async (prefixes) => {
   const words = [];
   for (const prefix of prefixes) {
     const url = `http://ukrlit.org/slovnyk/slovnyk_ukrainskoi_movy_v_11_tomakh/${prefix}~`;
@@ -30,7 +30,7 @@ async function getWords(prefixes) {
   return words;
 }
 
-async function createFile(url) {
+const createFile = async (url) => {
   const prefixes = await getPrefixes(url);
   const words = await getWords(prefixes);
   fs.writeFileSync('words.txt', [...words].join('\n'), 'utf-8');

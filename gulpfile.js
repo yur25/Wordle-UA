@@ -1,9 +1,13 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
-const browserSync = require('browser-sync').create();
-const cleanCSS = require('gulp-clean-css');
-const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
+import gulp from 'gulp';
+import * as dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+import browserSyncLib from 'browser-sync';
+import cleanCSS from 'gulp-clean-css';
+import uglify from 'gulp-uglify';
+import concat from 'gulp-concat';
+
+const sass = gulpSass(dartSass);
+const browserSync = browserSyncLib.create();
 
 // Функція для динамічного імпорту
 async function loadAutoprefixer() {

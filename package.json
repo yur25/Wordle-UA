@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/browser/index.js"
   },
+  "type": "module",
   "devDependencies": {
     "browser-sync": "^3.0.4",
     "gulp": "^5.0.0",
@@ -17,6 +18,7 @@
     "sass": "^1.86.3"
   },
   "dependencies": {
-    "cheerio": "^1.0.0"
+    "cheerio": "^1.0.0",
+    "fastify": "^5.3.3"
   }
 }
