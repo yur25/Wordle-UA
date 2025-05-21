@@ -1,6 +1,6 @@
 const wordCompare = (input, answer) => {
-    const inputArray = input.split('');
-    const answerArray = answer.split('');
+    const inputArray = arraify(input);
+    const answerArray = arraify(answer);
     const objArray = [];
 
     for (let i in inputArray) {                                         // перевіряє чи на однаковій позиції в обох словах є однакові літери. Якщо так - колір зелений.

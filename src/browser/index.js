@@ -19,6 +19,13 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
 
 let activeCell = [0,0]; // рядок, колонка
 let guess = new Array(columns).fill(undefined);
-let wordleAnswer = 'качка';
+
+let wordleAnswer = '';                  // TODO: Тимчасова штука! Зробити по-нормальному якщо можна
+const testasync = async () => {
+  wordleAnswer = await getRandomWord();
+}
+
+testasync();
+
 highlightBox();
 messagePlayer('Ви омегакрутелик', 'win'); // Протестив всі варіанти, робоче

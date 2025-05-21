@@ -1,3 +1,15 @@
+const getRandomWord = async () => {
+    const response = await fetch('http://localhost:5000/getRandomWord');
+    const word = await response.text();
+    return word;
+};
+
+const validateWord = async (word) => {
+    const response = await fetch(`http://localhost:5000/validateWord?word=${word}`);
+    const isValid = await response.json();
+    return isValid;
+}
+
 const highlightBox = () => {
     for (let i = 0; i < columns; i++) {
         const box = getBox(activeCell[0], i);
@@ -57,12 +69,13 @@ const eraseKey = () => {
     highlightBox();
     console.log(guess); // Тестова штука  
 };
-const submitKey = () => {
+const submitKey = async () => {
     if (keyboardOff) return;
     if (guess[columns - 1] === undefined) {messagePlayer('Введіть усі літери', 'error');
         return};
     let guessWord = deArraify(guess);
-    /* if (!validateWord(guessWord)) {messagePlayer('Введіть слово з української мови', 'error')
+    const validity = await validateWord(guessWord);
+    if (!validity) {messagePlayer('Введіть слово з української мови', 'error');
     return};
     const compareArray = wordCompare(guessWord, wordleAnswer);
     const gamestate = summaryRow(compareArray);
@@ -72,5 +85,4 @@ const submitKey = () => {
     if (gamestate === 'gameover') {messagePlayer('Ви програли, спробуйте знову!', 'error');
         keyboardOff = true;
         return}
-    */
 };
