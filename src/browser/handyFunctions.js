@@ -18,22 +18,21 @@ const memoize = (f, n) => { // Лабораторна робота 3, будем
             const arr = memory.get(input);
             memory.set(input, [arr[0], arr[1] + 1]);
             return arr[0];
-        } else {
-            if (memory.size >= n) {
-                let minKey;
-                let minCount = Infinity;
-                for (const [key, arr] of memory.entries()) {
-                    if (arr[1] < minCount) {
+        }
+        if (memory.size >= n) {
+            let minKey;
+            let minCount = Infinity;
+            for (const [key, arr] of memory.entries()) {
+                if (arr[1] < minCount) {
                         minCount = arr[1];
                         minKey = key;
-                    }
                 }
+            }
                 memory.delete(minKey);
-            };
-            const answer = f(...args);
-            memory.set(input, [answer, 1]);
-            return answer;
-        }
+        };
+        const answer = f(...args);
+        memory.set(input, [answer, 1]);
+        return answer;
     }
 };
 

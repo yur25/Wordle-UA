@@ -28,4 +28,3 @@ const testasync = async () => {
 testasync();
 
 highlightBox();
-messagePlayer('Ви омегакрутелик', 'win'); // Протестив всі варіанти, робоче

@@ -27,8 +27,8 @@ const summaryRow = (arr) => { // функція, фарбує рядок з ер
         box.classList.remove('now');
         if (arr[i] !== 'match') {isWin = false};
     }
-    if (isWin) {return 'win'};
-    if (row === rows - 1) {return 'gameover'};
+    if (isWin) return 'win';
+    if (row === rows - 1) return 'gameover';
     activeCell = [row + 1, 0];
     highlightBox();
     guess = new Array(columns).fill(undefined);
@@ -41,8 +41,7 @@ const messagePlayer = (message, decor = 'normal') => { // функція, яка
     if (decor === 'win') {cLine.classList.add('win-message')}
     cLine.innerText = message;
 };
-const normalKey = (key) => {
-    return () => {
+const normalKey = (key) => () => {
     if (keyboardOff) return;
     const column = activeCell[1];
     if (guess[column] !== undefined) return;
@@ -52,7 +51,6 @@ const normalKey = (key) => {
     if (column !== columns - 1) {activeCell[1] += 1};
     highlightBox();
     console.log(guess); // Тестова штука
-    }
 };
 const eraseKey = () => {
     if (keyboardOff) return;
