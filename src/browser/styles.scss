@@ -88,16 +88,16 @@ $win: #be9c00;
     &:hover{
         filter: brightness(0.8);
     }
-    &.match {
-        background-color: $match;
+    &.miss {
+        background-color: $miss;
         color: #ffffff;
     }
     &.here {
         background-color: $here;
         color: #ffffff;
     }
-    &.miss {
-        background-color: $miss;
+    &.match {
+        background-color: $match;
         color: #ffffff;
     }
     &:active {

@@ -8,7 +8,7 @@ const validateWord = async (word) => {
     const response = await fetch(`http://localhost:5000/validateWord?word=${word}`);
     const isValid = await response.json();
     return isValid;
-}
+};
 
 const highlightBox = () => {
     for (let i = 0; i < columns; i++) {
@@ -18,6 +18,14 @@ const highlightBox = () => {
     const box = getBox(...activeCell);
     box.classList.add('now');
 };
+
+const colorKeyboard = (guessArray, colorArray) => {
+    for (let i = 0; i < guessArray.length; i++) {
+        let letterBox = document.getElementById('keybox-' + guessArray[i]);
+        letterBox.classList.add(colorArray[i]);
+    }
+};
+
 const summaryRow = (arr) => { // функція, фарбує рядок з еррея попаданнь і повертає 'win', 'gameover' або 'continue'
     const row = activeCell[0];
     let isWin = true;
@@ -34,6 +42,7 @@ const summaryRow = (arr) => { // функція, фарбує рядок з ер
     guess = new Array(columns).fill(undefined);
     return 'continue';
 };
+
 const messagePlayer = (message, decor = 'normal') => { // функція, яка виводить повідомлення на лінію
     cLine.classList.remove('error-message');
     cLine.classList.remove('win-message');
@@ -41,6 +50,7 @@ const messagePlayer = (message, decor = 'normal') => { // функція, яка
     if (decor === 'win') {cLine.classList.add('win-message')}
     cLine.innerText = message;
 };
+
 const normalKey = (key) => () => {
     if (keyboardOff) return;
     const column = activeCell[1];
@@ -52,6 +62,7 @@ const normalKey = (key) => () => {
     highlightBox();
     console.log(guess); // Тестова штука
 };
+
 const eraseKey = () => {
     if (keyboardOff) return;
     const column = activeCell[1];
@@ -67,6 +78,7 @@ const eraseKey = () => {
     highlightBox();
     console.log(guess); // Тестова штука  
 };
+
 const submitKey = async () => {
     if (keyboardOff) return;
     if (guess[columns - 1] === undefined) {messagePlayer('Введіть усі літери', 'error');
@@ -76,6 +88,7 @@ const submitKey = async () => {
     if (!validity) {messagePlayer('Введіть слово з української мови', 'error');
     return};
     const compareArray = wordCompare(guessWord, wordleAnswer);
+    colorKeyboard(guess, compareArray);
     const gamestate = summaryRow(compareArray);
     if (gamestate === 'win') {messagePlayer('Вітаємо, ви перемогли!', 'win');
         keyboardOff = true;
