@@ -80,7 +80,7 @@ const submitKey = async () => {
     if (gamestate === 'win') {messagePlayer('Вітаємо, ви перемогли!', 'win');
         keyboardOff = true;
         return};
-    if (gamestate === 'gameover') {messagePlayer('Ви програли, спробуйте знову!', 'error');
+    if (gamestate === 'gameover') {messagePlayer('Ви програли, спробуйте знову! Потрібно було вгадати слово ' + wordleAnswer, 'error');
         keyboardOff = true;
         return}
 };
