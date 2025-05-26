@@ -37,3 +37,23 @@ const createFile = async (url) => {
 }
 
 createFile(url);
+
+// const getSwearWords = async (words) => {
+//   const swearWords = [];
+//   for (const word of words) {
+//     const url = `http://ukrlit.org/slovnyk/slovnyk_ukrainskoi_movy_v_11_tomakh/${word}`;
+//     const response = await fetch(url);
+//     const text = await response.text();
+//     if (text.includes('вульг.') || text.includes('лайл.')) swearWords.push(word);
+//   }
+//   return swearWords;
+// }
+
+// const checkWords = async (url) => {
+//   const prefixes = await getPrefixes(url);
+//   const words = await getWords(prefixes);
+//   const badWords = await getSwearWords(words);
+//   console.log(badWords);
+// }
+
+// checkWords(url);
