@@ -1,5 +1,4 @@
 
-
 for (let i = 0; i < rows; i++) { //генерація потрібної кількості рядків, коробочок і надання їм усім унікального id
   const row = document.createElement('div');
     row.classList.add('row');
