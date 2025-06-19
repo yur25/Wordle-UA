@@ -1,8 +1,4 @@
-const columns = 5 // скільки літер у слові
-const rows = 6 // скільки спроб вгадати
-const gamefield = document.getElementById('gamefield');
-const cLine = document.getElementById('communication-line');
-let keyboardOff = false;
+
 
 for (let i = 0; i < rows; i++) { //генерація потрібної кількості рядків, коробочок і надання їм усім унікального id
   const row = document.createElement('div');
@@ -17,8 +13,7 @@ for (let i = 0; i < rows; i++) { //генерація потрібної кіл�
 
   gamefield.appendChild(row);}
 
-let activeCell = [0,0]; // рядок, колонка
-let guess = new Array(columns).fill(undefined);
+
 
 let wordleAnswer = '';                  // TODO: Тимчасова штука! Зробити по-нормальному якщо можна
 const testasync = async () => {

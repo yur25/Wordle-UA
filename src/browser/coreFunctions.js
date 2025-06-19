@@ -19,12 +19,7 @@ const highlightBox = () => {
     box.classList.add('now');
 };
 
-const colorKeyboard = (guessArray, colorArray) => {
-    for (let i = 0; i < guessArray.length; i++) {
-        let letterBox = document.getElementById('keybox-' + guessArray[i]);
-        letterBox.classList.add(colorArray[i]);
-    }
-};
+
 
 const summaryRow = (arr) => { // функція, фарбує рядок з еррея попаданнь і повертає 'win', 'gameover' або 'continue'
     const row = activeCell[0];
@@ -43,13 +38,7 @@ const summaryRow = (arr) => { // функція, фарбує рядок з ер
     return 'continue';
 };
 
-const messagePlayer = (message, decor = 'normal') => { // функція, яка виводить повідомлення на лінію
-    cLine.classList.remove('error-message');
-    cLine.classList.remove('win-message');
-    if (decor === 'error') {cLine.classList.add('error-message')}
-    if (decor === 'win') {cLine.classList.add('win-message')}
-    cLine.innerText = message;
-};
+
 
 const normalKey = (key) => () => {
     if (keyboardOff) return;
