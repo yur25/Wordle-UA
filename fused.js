@@ -5029,10 +5029,15 @@ const allWords = [
   "ячник",
   "яшник"
 ];
+const chooseRandomWord = () => {
+    const randomIndex = Math.floor(Math.random() * allWords.length);
+    return allWords[randomIndex];
+};
+const wordleAnswer = chooseRandomWord();
 
 // Функції. Пробую кидати їх у порядку, де спершу без вкладених функцій, далі що тільки з ними і так далі
 // функції без вкладених функцій
-const getBox = (i, j) => { return document.getElementById('box' + i.toString() + '-' + j.toString()) }
+const getBox = (i, j) => { return document.getElementById('box' + i.toString() + '-' + j.toString()) };
 const arraify = (word) => {
     if (typeof word === "object") {return word}
     return word.split("")
@@ -5054,6 +5059,32 @@ const messagePlayer = (message, decor = 'normal') => {
     if (decor === 'win') {cLine.classList.add('win-message')}
     cLine.innerText = message;
 };
+const memoize = (f, mapCap = 100) => { 
+    const memory = new Map(); 
+    return (...args) => {
+        const input = args.join(",");
+        if (memory.has(input)) {
+            const arr = memory.get(input);
+            const count = arr[1];
+            const answer = arr[0];
+            memory.set(input, [answer, count + 1]);
+            return answer;
+        }
+        if (memory.size >= mapCap) {
+            let minKey;
+            let minCount = Infinity;
+            for (const [key, arr] of memory.entries()) {
+                if (arr[1] < minCount) {
+                    minCount = arr[1];
+                    minKey = key;
+                }}
+            memory.delete(minKey);
+        };
+        const answer = f(...args);
+        memory.set(input, [answer, 1]);
+        return answer;
+    }};
+const rawValidateWord = (word) => { return allWords.includes(word) };
 // функції наступного шару
 const wordCompare = (input, answer) => {
     const inputArray = arraify(input);
@@ -5083,6 +5114,7 @@ const highlightBox = () => {
     const box = getBox(...activeCell);
     box.classList.add('now');
 };
+const validateWord = memoize(rawValidateWord, 50);
 //функції наступного шару
 const summaryRow = (arr) => {
     const row = activeCell[0];
@@ -5123,5 +5155,56 @@ const eraseKey = () => {
     prevBox.innerText = '';
     highlightBox();
 };
+const submitKey = () => {
+    if (keyboardOff) return;
+    if (guess[columns - 1] === undefined) {messagePlayer('Введіть усі літери', 'error');
+        return};
+    let guessWord = deArraify(guess);
+    const validity = validateWord(guessWord);
+    if (!validity) {messagePlayer('Введіть слово з української мови', 'error');
+    return};
+    const compareArray = wordCompare(guessWord, wordleAnswer);
+    colorKeyboard(guess, compareArray);
+    const gamestate = summaryRow(compareArray);
+    if (gamestate === 'win') {messagePlayer('Вітаємо, ви перемогли!', 'win');
+        keyboardOff = true;
+        return};
+    if (gamestate === 'gameover') {messagePlayer('Ви програли, спробуйте знову! Потрібно було вгадати слово ' + wordleAnswer, 'error');
+        keyboardOff = true;
+        return}
+};
+
+// Сам код
+for (let i = 0; i < rows; i++) { 
+  const row = document.createElement('div');
+    row.classList.add('row');
+    row.id = 'row' + i.toString()
+  for (let j = 0; j < columns; j++) {
+    const box = document.createElement('div');
+    box.classList.add('letter-box');
+    box.id = 'box'+i.toString()+'-'+j.toString()
+    row.appendChild(box);
+  }
+
+  gamefield.appendChild(row);}
+highlightBox();
+for (let i = 0; i < keyboardArray.length; i++) {
+    const keyrow = document.getElementById('keyrow-' + i.toString());
+    keyboardArray[i].forEach((value) => {
+        const keyElement = document.createElement('div');
+        keyElement.classList.add('keyboard-box');
+        keyElement.innerText = value;
+        keyElement.id = 'keybox-' + value;
+        keyrow.appendChild(keyElement);
+        if (value === '←') {
+            keyElement.addEventListener('click', eraseKey);
+        } else if (value === '✔') {
+            keyElement.addEventListener('click', submitKey);
+        } else {
+            keyElement.addEventListener('click', normalKey(value));
+        }
+    });
+}
+
 
 
