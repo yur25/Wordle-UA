@@ -85,7 +85,7 @@ const submitKey = async () => {
         return};
     let guessWord = deArraify(guess);
     const validity = await validateWord(guessWord);
-    if (!validity) {messagePlayer('Введіть слово з української мови', 'error');
+    if (!validity) {messagePlayer('Введіть слово зі словника української мови', 'error');
     return};
     const compareArray = wordCompare(guessWord, wordleAnswer);
     colorKeyboard(guess, compareArray);
